@@ -1,11 +1,11 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
 const supplierSchema = new Schema({
   name: String,
   phone: Number,
-  email: String
+  email: String,
 });
 
-const Supplier = model('Supplier', supplierSchema);
+const Supplier = model("Supplier", supplierSchema);
 
 module.exports = Supplier;
