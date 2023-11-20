@@ -10,8 +10,7 @@ const customerSchema = new Schema({
   password: {
     type: String,
     required: true,
-  },
-  appointments: [Schema.Types.ObjectId],
+  }
 });
 
 const Customer = model("Customer", customerSchema);

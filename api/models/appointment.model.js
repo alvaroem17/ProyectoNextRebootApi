@@ -4,7 +4,7 @@ const appointmentSchema = new Schema({
   date: Date,
   description: String,
   duration: Number,
-  materials: [Schema.Types.ObjectId],
+  customer: Schema.Types.ObjectId,
 });
 
 const Appointment = model("Appointment", appointmentSchema);

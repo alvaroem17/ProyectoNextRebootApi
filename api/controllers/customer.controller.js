@@ -1,4 +1,5 @@
 const Customer = require("./../models/customer.model");
+const Appointment = require("./../models/appointment.model");
 
 const newCustomer = async (req, res) => {
   try {
@@ -46,10 +47,23 @@ const deleteCustomer = async (req, res) => {
   }
 };
 
+const addAppointment = async (req, res) => {
+  try {
+    const customer = await Customer.findById(req.params.id);
+    const appointment = new Appointment(req.body);
+    appointment.customer = customer._id;
+    const result = await appointment.save();
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
+
 module.exports = {
   newCustomer,
   getAllCustomers,
   getCustomer,
   updateCustomer,
   deleteCustomer,
+  addAppointment
 };
