@@ -1,19 +1,19 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
 const customerSchema = new Schema({
   name: String,
   phone: Number,
   email: {
     type: String,
-    required: true
+    required: true,
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
-  appointments: [Schema.Types.ObjectId]
+  appointments: [Schema.Types.ObjectId],
 });
 
-const Customer = model('Customer', customerSchema);
+const Customer = model("Customer", customerSchema);
 
 module.exports = Customer;
