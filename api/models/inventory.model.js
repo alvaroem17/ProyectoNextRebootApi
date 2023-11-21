@@ -1,9 +1,18 @@
 const { Schema, model } = require("mongoose");
 
 const inventorySchema = new Schema({
-  name: String,
-  quantity: Number,
-  price: Number,
+  name: {
+    type: String,
+    required: true,
+  },
+  quantity: {
+    type: Number,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
   supplier: Schema.Types.ObjectId,
 });
 

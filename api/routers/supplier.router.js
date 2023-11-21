@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { checkAuth, checkAdmin } = require("../middleware");
 const {
   newSupplier,
   getAllSuppliers,
@@ -7,10 +8,10 @@ const {
   deleteSupplier,
 } = require("./../controllers/supplier.controller");
 
-router.get("/", getAllSuppliers);
-router.get("/:id", getSupplier);
-router.post("/", newSupplier);
-router.put("/:id", updateSupplier);
-router.delete("/:id", deleteSupplier);
+router.get("/", checkAuth, checkAdmin, getAllSuppliers);
+router.get("/:id", checkAuth, checkAdmin, getSupplier);
+router.post("/", checkAuth, checkAdmin, newSupplier);
+router.put("/:id", checkAuth, checkAdmin, updateSupplier);
+router.delete("/:id", checkAuth, checkAdmin, deleteSupplier);
 
 module.exports = router;

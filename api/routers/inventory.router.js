@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { checkAuth, checkAdmin } = require("../middleware");
 const {
   newInventory,
   getAllInventories,
@@ -7,10 +8,10 @@ const {
   deleteInventory,
 } = require("./../controllers/inventory.controller");
 
-router.get("/", getAllInventories);
-router.get("/:id", getInventory);
-router.post("/", newInventory);
-router.put("/:id", updateInventory);
-router.delete("/:id", deleteInventory);
+router.get("/", checkAuth, checkAdmin, getAllInventories);
+router.get("/:id", checkAuth, checkAdmin, getInventory);
+router.post("/", checkAuth, checkAdmin, newInventory);
+router.put("/:id", checkAuth, checkAdmin, updateInventory);
+router.delete("/:id", checkAuth, checkAdmin, deleteInventory);
 
 module.exports = router;
