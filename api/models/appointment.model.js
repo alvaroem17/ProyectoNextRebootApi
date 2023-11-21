@@ -1,9 +1,15 @@
 const { Schema, model } = require("mongoose");
 
 const appointmentSchema = new Schema({
-  date: Date,
+  date: {
+    type: Date,
+    required: true
+  },
   description: String,
-  duration: Number,
+  duration: {
+    type: Number,
+    required: true
+  },
   customer: Schema.Types.ObjectId,
 });
 
