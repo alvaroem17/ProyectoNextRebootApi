@@ -12,6 +12,7 @@ const employeeSchema = new Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
     validate: {
       validator: function (email) {
         const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
