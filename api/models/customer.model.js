@@ -8,6 +8,7 @@ const customerSchema = new Schema({
   phone: Number,
   email: {
     type: String,
+    unique: true,
     required: true,
     validate: {
       validator: function (email) {
