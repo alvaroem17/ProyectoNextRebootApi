@@ -21,7 +21,7 @@ async function login(req, res) {
                     expiresIn: '1h'
                 })
                 return res.status(200).json({
-                    token
+                    token: token, employeeId: employee._id
                 })
             } else {
                 return res.status(404).json('Error: Email or Password incorrect')
@@ -36,7 +36,7 @@ async function login(req, res) {
                     expiresIn: '1h'
                 })
                 return res.status(200).json({
-                    token
+                    token: token, customerId: customer._id
                 })
             } else {
                 return res.status(404).json('Error: Email or Password incorrect')
@@ -66,7 +66,7 @@ async function signUp(req, res) {
             expiresIn: '1h'
         })
         return res.status(200).json({
-            token
+            token: token, customerId: customer._id
         })
     } catch (error) {
         return res.status(500).send(error.message)
