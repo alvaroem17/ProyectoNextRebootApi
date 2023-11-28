@@ -15,6 +15,7 @@ const {
   getProfile,
   editProfile,
   getAppointments,
+  deleteAppointments,
 } = require("./../controllers/customer.controller");
 
 //Especific routes for customers
@@ -22,6 +23,7 @@ router.get("/profile", checkAuth, getProfile);
 router.put("/profile", checkAuth, editProfile);
 router.get("/profile/appointments", checkAuth, getAppointments);
 router.put("/profile/appointments", checkAuth, addAppointment); //add middleware to check auth
+router.delete("/profile/appointments/:id", checkAuth, deleteAppointments)
 
 router.get("/", checkAuth, checkAdmin, getAllCustomers);
 router.get("/:id", checkAuth, checkAdmin, getCustomer);
