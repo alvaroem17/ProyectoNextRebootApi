@@ -46,10 +46,28 @@ const deleteAppointment = async (req, res) => {
   }
 };
 
+const getAppointmentsDates = async (req, res) => {
+  try {
+    const date = new Date(req.body.date)
+    const date1 = new Date(date)
+    date1.setDate(date1.getDate()+7)
+    console.log(date1)
+    const appointments = await Appointment.find({
+      date: { $gt: date, $lt: date1},
+    }, {
+      date:1, duration:1
+    });
+    return res.status(200).json(appointments);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
+
 module.exports = {
   newAppointment,
   getAllAppointments,
   getAppointment,
   updateAppointment,
   deleteAppointment,
+  getAppointmentsDates
 };
