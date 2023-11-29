@@ -10,7 +10,7 @@ const {
 } = require("./../controllers/appointment.controller");
 
 //appointments for customers
-router.get("/forcustomers", checkAuth, getAppointmentsDates);
+router.get("/forcustomers/:date", checkAuth, getAppointmentsDates);
 
 router.get("/", checkAuth, checkAdmin, getAllAppointments);
 router.get("/:id", checkAuth, checkAdmin, getAppointment);

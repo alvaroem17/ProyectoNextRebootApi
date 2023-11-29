@@ -47,8 +47,9 @@ const deleteAppointment = async (req, res) => {
 };
 
 const getAppointmentsDates = async (req, res) => {
+
   try {
-    const date = new Date(req.body.date)
+    const date = new Date(req.params.date)
     const date1 = new Date(date)
     date1.setDate(date1.getDate()+7)
     console.log(date1)
