@@ -21,7 +21,7 @@ const getAllAppointments = async (req, res) => {
 
 const getAppointment = async (req, res) => {
   try {
-    const appointment = await Appointment.findById(req.params.id);
+    const appointment = await Appointment.findById(req.params.id).populate("customer").exec();
     return res.status(200).json(appointment);
   } catch (error) {
     return res.status(500).send(error.message);
