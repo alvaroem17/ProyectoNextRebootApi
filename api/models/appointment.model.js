@@ -10,7 +10,7 @@ const appointmentSchema = new Schema({
     type: Number,
     required: true
   },
-  customer: Schema.Types.ObjectId,
+  customer: {type: Schema.Types.ObjectId, ref: "Customer"},
 });
 
 const Appointment = model("Appointment", appointmentSchema);

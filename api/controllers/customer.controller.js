@@ -72,6 +72,16 @@ const getAppointments = async (req, res) => {
   }
 };
 
+const deleteAppointments = async (req, res) => {
+  try {
+    await Appointment.deleteOne({
+      _id: req.params.id,
+    });
+    return res.status(200).send("Deleted successfully");
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
 const getProfile = async (req, res) => {
   try {
     const customer = await Customer.findById(res.locals.customer._id);
@@ -103,4 +113,5 @@ module.exports = {
   getProfile,
   editProfile,
   getAppointments,
+  deleteAppointments
 };
